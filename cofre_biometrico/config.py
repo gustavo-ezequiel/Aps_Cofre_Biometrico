@@ -1,20 +1,14 @@
-"""
-Configurações gerais do Sistema de Identificação e Autenticação Biométrica.
-Altere aqui o banco de dados, a câmera e os parâmetros de reconhecimento.
-"""
 import os
 
 # ----------------------------------------------------------------- Pastas
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 DADOS_DIR = os.path.join(BASE_DIR, "dados")
-ROSTOS_DIR = os.path.join(DADOS_DIR, "rostos")          # amostras de cada usuário
-INTRUSOS_DIR = os.path.join(DADOS_DIR, "intrusos")      # fotos de acessos negados
-RELATORIOS_DIR = os.path.join(DADOS_DIR, "relatorios")  # relatórios HTML/CSV
+ROSTOS_DIR = os.path.join(DADOS_DIR, "rostos")          
+INTRUSOS_DIR = os.path.join(DADOS_DIR, "intrusos")      
+RELATORIOS_DIR = os.path.join(DADOS_DIR, "relatorios")  
 MODELO_PATH = os.path.join(DADOS_DIR, "modelo_lbph.yml")
 
 # ------------------------------------------------------- Banco de dados
-# "sqlite" funciona sem instalar nada.
-# "mysql" usa o MySQL do XAMPP (inicie o MySQL no painel do XAMPP antes).
 DB_ENGINE = "sqlite"
 SQLITE_PATH = os.path.join(DADOS_DIR, "cofre.db")
 MYSQL = {
@@ -26,19 +20,19 @@ MYSQL = {
 }
 
 # ------------------------------------------------------------- Câmera
-CAMERA_INDEX = 0            # 0 = webcam padrão; troque para 1, 2... se tiver outra
+CAMERA_INDEX = 0            
 
 # ------------------------------------------------------ Reconhecimento
-TAMANHO_ROSTO = (200, 200)  # tamanho padronizado do rosto (Fase 4)
-AMOSTRAS_CADASTRO = 30      # quantas fotos capturar no cadastro
-LIMIAR_LBPH = 65.0          # distância máxima aceita pelo LBPH (menor = mais rígido)
-FRAMES_CONFIRMACAO = 8      # quadros seguidos com a mesma identidade para decidir
-TEMPO_MAX_VERIFICACAO = 20  # segundos até desistir da verificação
+TAMANHO_ROSTO = (200, 200)  
+AMOSTRAS_CADASTRO = 30      
+LIMIAR_LBPH = 65.0          
+FRAMES_CONFIRMACAO = 8      
+TEMPO_MAX_VERIFICACAO = 20  
 
 # ----------------------------------------------------------- Segurança
-PROVA_DE_VIDA = True        # exige uma piscada (dificulta fraude com foto impressa)
-MAX_TENTATIVAS = 3          # negações seguidas antes de bloquear o terminal
-TEMPO_BLOQUEIO = 60         # segundos de bloqueio após exceder as tentativas
+PROVA_DE_VIDA = True       
+MAX_TENTATIVAS = 3          
+TEMPO_BLOQUEIO = 60         
 
 NIVEIS = {
     1: "Permissao geral",
