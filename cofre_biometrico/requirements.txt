@@ -1,0 +1,4 @@
+opencv-contrib-python>=4.8
+numpy>=1.24
+# Somente se usar MySQL/XAMPP (DB_ENGINE = "mysql" em config.py):
+mysql-connector-python>=8.0
