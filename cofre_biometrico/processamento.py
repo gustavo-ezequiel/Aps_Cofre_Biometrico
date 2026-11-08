@@ -1,16 +1,3 @@
-"""
-Pipeline de processamento de imagens digitais, organizado nas cinco fases
-clássicas (Gonzalez & Woods):
-
-  Fase 1 - Aquisição ............ Camera, carregar_imagem
-  Fase 2 - Pré-processamento .... pre_processar, avaliar_qualidade
-  Fase 3 - Segmentação .......... detectar_rostos, detectar_olhos
-  Fase 4 - Representação e
-           descrição ............ extrair_rosto (recorte, alinhamento,
-                                  normalização) + histogramas LBP
-  Fase 5 - Reconhecimento e
-           interpretação ........ Reconhecedor (LBPH) e ProvaDeVida
-"""
 import os
 import glob
 import math
@@ -39,7 +26,7 @@ class Camera:
         ok, quadro = self.cap.read()
         if not ok or quadro is None:
             raise RuntimeError("Falha ao capturar imagem da camera.")
-        return cv2.flip(quadro, 1)  # espelha para parecer um espelho
+        return cv2.flip(quadro, 1)  
 
     def fechar(self):
         self.cap.release()
@@ -72,8 +59,8 @@ def pre_processar(imagem):
         cinza = cv2.cvtColor(imagem, cv2.COLOR_BGR2GRAY)
     else:
         cinza = imagem.copy()
-    cinza = cv2.GaussianBlur(cinza, (3, 3), 0)   # filtro passa-baixa (ruído)
-    return _clahe.apply(cinza)                   # equalização adaptativa
+    cinza = cv2.GaussianBlur(cinza, (3, 3), 0)   
+    return _clahe.apply(cinza)                   
 
 
 def avaliar_qualidade(rosto_cinza):
@@ -147,7 +134,7 @@ def _alinhar(cinza, rosto, olhos):
     c1 = (x1 + w1 / 2, y1 + h1 / 2)
     c2 = (x2 + w2 / 2, y2 + h2 / 2)
     angulo = math.degrees(math.atan2(c2[1] - c1[1], c2[0] - c1[0]))
-    if abs(angulo) > 25:          # provavelmente detecção errada; não gira
+    if abs(angulo) > 25:          
         return cinza
     x, y, w, h = rosto
     centro = (x + w / 2, y + h / 2)
@@ -255,7 +242,7 @@ class ProvaDeVida:
             self.quadros_fechados = 0
         elif qtd_olhos == 0 and self.quadros_abertos >= 3:
             self.quadros_fechados += 1
-            if self.quadros_fechados > 6:     # olhos sumiram por muito tempo
+            if self.quadros_fechados > 6:     
                 self.quadros_abertos = 0
                 self.quadros_fechados = 0
         return self.confirmada
