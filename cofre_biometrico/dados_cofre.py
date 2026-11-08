@@ -1,10 +1,3 @@
-"""
-Conteúdo do cofre: uma tabela por nível de segurança.
-
-Este arquivo é a FONTE dos dados: a cada execução o sistema recria as três
-tabelas no banco a partir daqui. Para alterar o conteúdo, edite este arquivo
-(mudanças feitas direto no phpMyAdmin são sobrescritas ao reiniciar).
-"""
 
 AREAS = {
     1: {
@@ -64,7 +57,7 @@ AREAS = {
     },
 }
 
-# Tabelas de versões anteriores do sistema, removidas automaticamente.
+
 TABELAS_ANTIGAS = [
     "nivel1_registro_toxinas",
     "nivel2_relatorios_incidentes",
