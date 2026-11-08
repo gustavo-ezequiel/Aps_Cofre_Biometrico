@@ -1,9 +1,3 @@
-"""
-COFRE BIOMÉTRICO - Ministério do Meio Ambiente
-Sistema de Identificação e Autenticação Biométrica por reconhecimento facial.
-
-Execute:  python main.py
-"""
 import os
 import shutil
 import sys
