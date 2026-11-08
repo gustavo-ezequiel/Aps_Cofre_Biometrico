@@ -1,6 +1,3 @@
--- Banco do Cofre Biometrico (MySQL / XAMPP)
--- Opcional: o programa cria tudo sozinho ao iniciar com DB_ENGINE = "mysql".
--- Use este script se quiser criar pelo phpMyAdmin (http://localhost/phpmyadmin).
 
 CREATE DATABASE IF NOT EXISTS cofre_biometrico
   DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
@@ -22,22 +19,12 @@ CREATE TABLE IF NOT EXISTS acessos (
   nivel_area  TINYINT NOT NULL,             -- area que tentou acessar
   resultado   VARCHAR(20) NOT NULL,         -- CONCEDIDO / NEGADO / BLOQUEIO
   motivo      VARCHAR(255),
-  distancia   DOUBLE,                       -- distancia LBPH (menor = mais parecido)
+  distancia   DOUBLE,                      
   foto        VARCHAR(255),                 -- foto do intruso, se negado
   data_hora   DATETIME NOT NULL,
   FOREIGN KEY (usuario_id) REFERENCES usuarios(id)
 );
 
--- Consultas uteis para o relatorio/dissertacao
--- Tentativas por resultado:
---   SELECT resultado, COUNT(*) FROM acessos GROUP BY resultado;
--- Negacoes por area:
---   SELECT nivel_area, COUNT(*) FROM acessos WHERE resultado='NEGADO' GROUP BY nivel_area;
-
--- ================================================================
--- CONTEUDO DO COFRE: uma tabela por nivel de seguranca
--- (o programa recria estas tabelas a partir de dados_cofre.py ao iniciar)
--- ================================================================
 
 DROP TABLE IF EXISTS nivel1_registro_toxinas;
 DROP TABLE IF EXISTS nivel2_relatorios_incidentes;
