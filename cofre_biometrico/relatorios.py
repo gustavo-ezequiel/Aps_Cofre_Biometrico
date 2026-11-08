@@ -1,7 +1,3 @@
-"""
-Relatórios adicionais: histórico de acessos em HTML (com estatísticas e
-fotos de intrusos) e exportação em CSV.
-"""
 import csv
 import html
 import os
