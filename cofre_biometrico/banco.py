@@ -1,7 +1,4 @@
-"""
-Camada de persistência: usuários autorizados e registro (log) de acessos.
-Funciona com SQLite (padrão) ou MySQL/XAMPP, conforme config.DB_ENGINE.
-"""
+
 import os
 import sqlite3
 from datetime import datetime
